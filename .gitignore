@@ -6,7 +6,7 @@
 .pnp.js
 
 # Ignore Firebase Config
-/src/firebase/firebase.js
+#/src/firebase/firebase.js
 
 # testing
 /coverage
