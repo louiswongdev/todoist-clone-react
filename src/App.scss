@@ -266,6 +266,33 @@ header {
   }
 
   li {
+    list-style-type: none;
+    color: #333;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    cursor: pointer;
+    line-height: 1.5;
+    font-size: 15px;
+    padding: 10px 0;
+    // height: 30px;
+
+    span:first-of-type {
+      margin-left: 20px;
+      margin-right: 10px;
+    }
+
+    span {
+      display: flex;
+      align-items: center;
+    }
+
+    svg {
+      width: 18px;
+      height: 18px;
+      color: #555;
+    }
+
     &:hover .sidebar__project-delete {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -274,8 +301,7 @@ header {
   }
 
   &__project {
-    cursor: pointer;
-
+    padding: 0 !important;
     div:nth-child(1) {
       // padding: 5px 0;
       // padding-left: 10px;
@@ -289,14 +315,14 @@ header {
       // align-items: center;
     }
 
-    &-delete {
-      margin-left: auto;
-      display: none;
+    // &-delete {
+    //   margin-left: auto;
+    //   display: none;
 
-      svg {
-        color: #cacaca;
-      }
-    }
+    //   svg {
+    //     color: #cacaca;
+    //   }
+    // }
 
     &.active,
     &:hover {
@@ -333,6 +359,16 @@ header {
 
   &__projects {
     padding-left: 3px;
+
+    span.sidebar__project-delete {
+      margin-left: auto;
+      padding-right: 10px;
+      display: none;
+
+      svg {
+        color: #cacaca;
+      }
+    }
   }
 
   &__project {
@@ -375,40 +411,56 @@ header {
 
   &__generic {
     li {
-      list-style-type: none;
-      color: #333;
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      cursor: pointer;
-      line-height: 1.5;
-      font-size: 15px;
-      padding-left: 0;
-      padding-right: 0;
+      // list-style-type: none;
+      // color: #333;
+      // display: -webkit-box;
+      // display: -ms-flexbox;
+      // display: flex;
+      // cursor: pointer;
+      // line-height: 1.5;
+      // font-size: 15px;
+      // // height: 30px;
+      // padding: 10px 0px;
 
-      div:nth-child(1) {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        padding: 10px 0 10px 10px;
-        width: 100%;
+      // span:first-of-type {
+      //   margin-left: 20px;
+      //   margin-right: 10px;
+      // }
 
-        span:first-of-type {
-          margin-right: 10px;
-          display: -webkit-box;
-          display: -ms-flexbox;
-          display: flex;
-          -webkit-box-align: center;
-          -ms-flex-align: center;
-          align-items: center;
+      // span {
+      //   display: flex;
+      //   align-items: center;
+      // }
 
-          svg {
-            width: 18px;
-            height: 18px;
-            color: #555;
-          }
-        }
-      }
+      // svg {
+      //   width: 18px;
+      //   height: 18px;
+      //   color: #555;
+      // }
+
+      // div:nth-child(1) {
+      //   display: -webkit-box;
+      //   display: -ms-flexbox;
+      //   display: flex;
+      //   padding: 10px 0 10px 10px;
+      //   width: 100%;
+
+      //   span:first-of-type {
+      //     margin-right: 10px;
+      //     display: -webkit-box;
+      //     display: -ms-flexbox;
+      //     display: flex;
+      //     -webkit-box-align: center;
+      //     -ms-flex-align: center;
+      //     align-items: center;
+
+      //     svg {
+      //       width: 18px;
+      //       height: 18px;
+      //       color: #555;
+      //     }
+      //   }
+      // }
 
       &.active,
       &:hover {
@@ -428,8 +480,8 @@ header {
     @include box-overlay();
     z-index: 99;
     width: 200px;
-    top: 30px;
-    right: 10px;
+    top: 22px;
+    right: -7px;
     background-color: white;
     padding: 12px 25px 20px;
 
@@ -447,6 +499,11 @@ header {
     span {
       @include cancel();
       font-weight: normal;
+    }
+
+    .delete-btn-group {
+      display: flex;
+      align-items: baseline;
     }
   }
 }
