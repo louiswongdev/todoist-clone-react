@@ -277,9 +277,9 @@ header {
     cursor: pointer;
 
     div:nth-child(1) {
-      padding: 5px 0;
-      padding-left: 10px;
-      padding-right: 15px;
+      // padding: 5px 0;
+      // padding-left: 10px;
+      // padding-right: 15px;
       // width: 100%;
       // display: -webkit-box;
       // display: -ms-flexbox;
@@ -428,10 +428,10 @@ header {
     @include box-overlay();
     z-index: 99;
     width: 200px;
-    padding: 10px;
     top: 30px;
     right: 10px;
     background-color: white;
+    padding: 12px 25px 20px;
 
     p {
       margin-top: 5px;
