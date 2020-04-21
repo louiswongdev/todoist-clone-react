@@ -6,7 +6,6 @@ import { collatedTasksExist } from '../helpers';
 export const useTasks = (selectedProject) => {
   const [tasks, setTasks] = useState([]);
   const [archivedTasks, setArchivedTasks] = useState([]);
-  console.log('fired from hook');
 
   useEffect(() => {
     let unsubscribe = firebase
@@ -19,17 +18,18 @@ export const useTasks = (selectedProject) => {
     // pass in selected project and if it doesn't exist in collatedTasks
     // (e.g Inbox, Today or Next_7), run first condition of grabbing project
     // by projectId. Else, grab tasks from 'Today'. Else, grab tasks from 'Inbox'
-    unsubscribe = selectedProject && !collatedTasksExist(selectedProject)
-      ? (unsubscribe = unsubscribe.where('projectId', '==', selectedProject))
-      : selectedProject === 'TODAY'
+    unsubscribe =
+      selectedProject && !collatedTasksExist(selectedProject)
+        ? (unsubscribe = unsubscribe.where('projectId', '==', selectedProject))
+        : selectedProject === 'TODAY'
         ? (unsubscribe = unsubscribe.where(
-          'date',
-          '==',
-          moment().format('DD/MM/YYY'),
-        ))
+            'date',
+            '==',
+            moment().format('DD/MM/YYY')
+          ))
         : selectedProject === 'INBOX' || selectedProject === 0
-          ? (unsubscribe = unsubscribe.where('date', '==', ''))
-          : unsubscribe;
+        ? (unsubscribe = unsubscribe.where('date', '==', ''))
+        : unsubscribe;
 
     unsubscribe = unsubscribe.onSnapshot((onSnapshot) => {
       const newTasks = onSnapshot.docs.map((task) => ({
@@ -40,10 +40,11 @@ export const useTasks = (selectedProject) => {
       setTasks(
         selectedProject === 'NEXT_7'
           ? newTasks.filter(
-            (task) => moment(task.date, 'DD-MM-YYYY').diff(moment(), 'days') <= 7
-                && task.archived !== true,
-          )
-          : newTasks.filter((task) => task.archived !== true),
+              (task) =>
+                moment(task.date, 'DD-MM-YYYY').diff(moment(), 'days') <= 7 &&
+                task.archived !== true
+            )
+          : newTasks.filter((task) => task.archived !== true)
       );
 
       setArchivedTasks(newTasks.filter((task) => task.archived !== false));
@@ -60,6 +61,7 @@ export const useProjects = () => {
 
   useEffect(() => {
     firebase
+      .firestore()
       .collection('projects')
       .where('userId', '==', 'asdfaslkjfasdf090asf')
       .orderBy('projectId') // show latest projects first
