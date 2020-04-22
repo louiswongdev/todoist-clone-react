@@ -13,7 +13,7 @@ export const useTasks = (selectedProject) => {
       .collection('tasks')
       .where('userId', '==', 'asdfaslkjfasdf090asf');
 
-    // console.log(unsubscribe, 'unsubscribe from hook');
+    console.log(unsubscribe, 'unsubscribe from hook');
 
     // pass in selected project and if it doesn't exist in collatedTasks
     // (e.g Inbox, Today or Next_7), run first condition of grabbing project

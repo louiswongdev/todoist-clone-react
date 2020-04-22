@@ -20,13 +20,11 @@ export const Tasks = () => {
     !collatedTasksExist(selectedProject)
   ) {
     projectName = getTitle(projects, selectedProject).name;
-    console.log('Project name 1: ', projectName);
   }
 
   // If we are using Inbox, Today or Next 7
   if (collatedTasksExist(selectedProject) && selectedProject) {
     projectName = getCollatedTitle(collatedTasks, selectedProject).name;
-    console.log('Project name 1: ', projectName);
   }
 
   useEffect(() => {
