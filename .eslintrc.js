@@ -7,7 +7,7 @@ module.exports = {
   parser: 'babel-eslint',
   rules: {
     'import/prefer-default-export': 'off',
-    // indent: ['error', 4, { MemberExpression: off }],
+    indent: ['error', 4, { MemberExpression: off }],
     'no-nested-ternary': 'off',
     // "prettier/prettier": [
     //   1,

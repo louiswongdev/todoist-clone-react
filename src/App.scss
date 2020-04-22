@@ -381,7 +381,7 @@ header {
   }
 
   &__middle {
-    margin-top: 10px;
+    margin-top: 20px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -749,7 +749,7 @@ header {
 
   &__list li {
     @include task-item();
-    padding: 0;
+    // padding: 0;
 
     div:nth-child(1) {
       width: 100%;
@@ -761,7 +761,7 @@ header {
 /* Add Project
     ============================================ */
 .add-project {
-  padding-left: 13px;
+  padding-left: 24px;
   padding-right: 20px;
   margin-top: 20px;
 
@@ -777,6 +777,10 @@ header {
     height: 35px;
     padding-left: 10px;
     padding-right: 10px;
+
+    &::placeholder {
+      color: #ccc;
+    }
   }
 
   &__submit {

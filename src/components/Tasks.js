@@ -4,6 +4,7 @@ import { useTasks } from '../hooks';
 import { collatedTasks } from '../constants';
 import { getTitle, getCollatedTitle, collatedTasksExist } from '../helpers';
 import { useSelectedProjectValue, useProjectsValue } from '../context';
+import { AddTask } from './AddTask';
 
 export const Tasks = () => {
   const { selectedProject } = useSelectedProjectValue();
@@ -13,7 +14,11 @@ export const Tasks = () => {
   let projectName = '';
 
   // Getting back just regular tasks (not from Inbox, Today and Next 7)
-  if (projects && selectedProject && !collatedTasksExist(selectedProject)) {
+  if (
+    projects.length > 0 &&
+    selectedProject &&
+    !collatedTasksExist(selectedProject)
+  ) {
     projectName = getTitle(projects, selectedProject).name;
     console.log('Project name 1: ', projectName);
   }
@@ -40,6 +45,7 @@ export const Tasks = () => {
           </li>
         ))}
       </ul>
+      <AddTask />
     </div>
   );
 };
