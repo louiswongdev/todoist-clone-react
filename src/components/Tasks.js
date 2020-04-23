@@ -15,6 +15,7 @@ export const Tasks = () => {
 
   // Getting back just regular tasks (not from Inbox, Today and Next 7)
   if (
+    projects &&
     projects.length > 0 &&
     selectedProject &&
     !collatedTasksExist(selectedProject)
@@ -29,7 +30,7 @@ export const Tasks = () => {
 
   useEffect(() => {
     document.title = `${projectName}: Todoist`;
-  }, []);
+  }, [projectName]);
 
   return (
     <div className="tasks" data-testid="tasks">

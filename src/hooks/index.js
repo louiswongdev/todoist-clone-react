@@ -25,14 +25,14 @@ export const useTasks = (selectedProject) => {
         ? (unsubscribe = unsubscribe.where(
             'date',
             '==',
-            moment().format('DD/MM/YYY')
+            moment().format('DD/MM/YYYY')
           ))
         : selectedProject === 'INBOX' || selectedProject === 0
         ? (unsubscribe = unsubscribe.where('date', '==', ''))
         : unsubscribe;
 
-    unsubscribe = unsubscribe.onSnapshot((onSnapshot) => {
-      const newTasks = onSnapshot.docs.map((task) => ({
+    unsubscribe = unsubscribe.onSnapshot((snapshot) => {
+      const newTasks = snapshot.docs.map((task) => ({
         id: task.id,
         ...task.data(),
       }));
@@ -58,8 +58,9 @@ export const useTasks = (selectedProject) => {
 
 export const useProjects = () => {
   const [projects, setProjects] = useState([]);
-
+  console.log('projects: outside useEffect:', projects);
   useEffect(() => {
+    console.log('projects: inside useEffect:', projects);
     firebase
       .firestore()
       .collection('projects')

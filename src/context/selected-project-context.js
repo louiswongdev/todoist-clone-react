@@ -5,6 +5,7 @@ export const SelectedProjectContext = createContext();
 
 export const SelectedProjectProvider = ({ children }) => {
   const [selectedProject, setSelectedProject] = useState('INBOX');
+  console.log(selectedProject);
 
   return (
     <SelectedProjectContext.Provider

@@ -66,10 +66,11 @@ export const AddTask = ({
           onClick={() => setShowMain(!showMain)}
         >
           <span className="add-task__plus">+</span>
-          <span className="add-text">Add Task</span>
+          <span className="add-task__text">Add Task</span>
         </div>
       )}
 
+      {/* Add task controls interface. Used by main tasks and quick add tasks overlay */}
       {(showMain || showQuickAddTask) && (
         <div className="add-task__main" data-testid="add-task-main">
           {showQuickAddTask && (
@@ -85,7 +86,7 @@ export const AddTask = ({
                     setShowQuickAddTask(false);
                   }}
                 >
-                  X
+                  ✕
                 </span>
               </div>
             </>
@@ -111,7 +112,11 @@ export const AddTask = ({
             type="button"
             className="add-task__submit"
             data-testid="add-task"
-            onClick={() => addTask()}
+            onClick={() =>
+              showQuickAddTask
+                ? addTask() && setShowQuickAddTask(false)
+                : addTask()
+            }
           >
             Add Task
           </button>

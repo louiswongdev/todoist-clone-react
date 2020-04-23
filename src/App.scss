@@ -141,6 +141,104 @@ $generic-bg: #db4c3f;
     background-color: #282828;
     border-color: transparent;
   }
+
+  .sidebar {
+    background-color: #282828;
+    border-right: none;
+
+    * {
+      color: hsla(0, 0%, 100%, 0.87);
+    }
+
+    li {
+      svg {
+        color: #fff;
+      }
+
+      &:hover {
+        background: #333;
+      }
+    }
+
+    li.active {
+      background-color: #363636;
+    }
+
+    &__middle {
+      border-bottom: 1px solid #484848;
+    }
+  }
+
+  .sidebar__projects {
+    .project-delete-modal__inner {
+      background-color: #505050;
+    }
+  }
+
+  .tasks {
+    * {
+      color: hsla(0, 0%, 100%, 0.87);
+    }
+
+    background-color: #1f1f1f;
+    border-right: none;
+
+    &__list li {
+      border-bottom: 1px solid #2b2b2b;
+    }
+
+    .add-task__content {
+      background-color: #171717 !important;
+      border: none;
+    }
+
+    .task-date,
+    .project-overlay {
+      background-color: #282828;
+    }
+
+    .task-date__list li {
+      border-bottom: none;
+
+      &:hover {
+        background-color: #171717;
+      }
+    }
+
+    .project-overlay {
+      &__list li {
+        border-bottom: none;
+
+        &:hover {
+          background-color: #171717 !important;
+        }
+      }
+    }
+  }
+
+  .settings svg {
+    color: #ffc107;
+  }
+
+  .add-task__overlay {
+    background: rgba(0, 0, 0, 0.7);
+  }
+
+  .add-task__overlay .add-task__main {
+    background-color: #1f1f1f;
+    color: #fff;
+
+    .add-task__content {
+      background-color: #171717 !important;
+      border: 1px solid hsla(0, 0%, 100%, 0.1) !important;
+      color: hsla(0, 0%, 100%, 0.87);
+      border: none;
+    }
+
+    svg {
+      color: #fff;
+    }
+  }
 }
 
 /* Header
@@ -217,13 +315,17 @@ header {
           }
 
           &.settings__add {
-            margin-right: 15px;
+            margin-right: 5px;
             font-size: 30px;
 
             button {
               @include transparent-button();
               color: white;
               cursor: pointer;
+            }
+
+            svg {
+              font-size: 18px;
             }
           }
 
@@ -637,8 +739,8 @@ header {
       color: gray;
       float: right;
       font-weight: bold;
-      font-size: 12px;
-      margin-top: 10px;
+      font-size: 14px;
+      margin-top: 5px;
     }
   }
 
@@ -709,7 +811,7 @@ header {
   @include box-overlay();
   background-color: #fff;
   width: 200px;
-  right: 0;
+  right: 30px;
 
   &__list li {
     @include task-item();
@@ -740,6 +842,10 @@ header {
     ============================================ */
 .project-overlay {
   @include box-overlay();
+  width: 200px;
+  position: absolute;
+  top: 85px;
+  right: 0;
   background-color: white;
 
   @include mq('900px') {
