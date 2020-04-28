@@ -142,6 +142,10 @@ $generic-bg: #db4c3f;
     border-color: transparent;
   }
 
+  .project-delete-modal__inner {
+    background-color: #505050;
+  }
+
   .sidebar {
     background-color: #282828;
     border-right: none;
@@ -166,12 +170,6 @@ $generic-bg: #db4c3f;
 
     &__middle {
       border-bottom: 1px solid #484848;
-    }
-  }
-
-  .sidebar__projects {
-    .project-delete-modal__inner {
-      background-color: #505050;
     }
   }
 
@@ -428,7 +426,7 @@ header {
 
     &.active,
     &:hover {
-      font-weight: bold;
+      // font-weight: bold;
       background-color: white;
     }
 
@@ -462,15 +460,15 @@ header {
   &__projects {
     padding-left: 3px;
 
-    span.sidebar__project-delete {
-      margin-left: auto;
-      padding-right: 10px;
-      display: none;
+    // span.sidebar__project-delete {
+    //   margin-left: auto;
+    //   padding-right: 10px;
+    //   display: none;
 
-      svg {
-        color: #cacaca;
-      }
-    }
+    //   svg {
+    //     color: #cacaca;
+    //   }
+    // }
   }
 
   &__project {
@@ -569,7 +567,7 @@ header {
 
       &.active,
       &:hover {
-        font-weight: bold;
+        // font-weight: bold;
         background-color: white;
       }
     }
@@ -656,16 +654,20 @@ header {
   }
 
   &__list li {
-    display: -webkit-box;
-    display: -ms-flexbox;
+    cursor: pointer;
     display: flex;
-    line-height: 18px;
+    line-height: 21px;
     color: #333;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-size: 14px;
+    font-size: 16px;
     list-style-type: none;
     border-bottom: 1px solid #f0f0f0;
+    padding: 15px 0px;
+
+    &:hover .task__delete {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+    }
 
     .checkbox-holder {
       margin-right: 20px;
@@ -895,5 +897,16 @@ header {
 
   &__cancel {
     @include cancel();
+  }
+}
+
+.sidebar__projects span.sidebar__project-delete,
+.tasks__list li .task__delete {
+  margin-left: auto;
+  padding-right: 10px;
+  display: none;
+
+  svg {
+    color: #cacaca;
   }
 }

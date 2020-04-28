@@ -3,9 +3,28 @@ import moment from 'moment';
 import { firebase } from '../firebase/firebase';
 import { collatedTasksExist } from '../helpers';
 
+// [
+//   {
+//     archived: false,
+//     projectId: 'NEXT_7',
+//     task: 'This is my task',
+//     id: '234234as',
+//     date: '01/05/2020',
+//     userId: 'asdfaslkjfasdf090asf',
+//   },
+//   {
+//     archived: false,
+//     projectId: 'INBOX',
+//     task: 'Read my notes',
+//     id: 'asdffad8',
+//     date: '',
+//     userId: 'asdfaslkjfasdf090asf',
+//   },
+// ]
+
 export const useTasks = (selectedProject) => {
-  const [tasks, setTasks] = useState([]);
   const [archivedTasks, setArchivedTasks] = useState([]);
+  const [tasks, setTasks] = useState();
 
   useEffect(() => {
     let unsubscribe = firebase
@@ -58,9 +77,8 @@ export const useTasks = (selectedProject) => {
 
 export const useProjects = () => {
   const [projects, setProjects] = useState([]);
-  console.log('projects: outside useEffect:', projects);
+
   useEffect(() => {
-    console.log('projects: inside useEffect:', projects);
     firebase
       .firestore()
       .collection('projects')
@@ -79,6 +97,8 @@ export const useProjects = () => {
         }
       });
   }, [projects]);
+
+  console.log(projects, 'projects');
 
   return { projects, setProjects };
 };
